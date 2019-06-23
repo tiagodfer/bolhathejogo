@@ -67,6 +67,7 @@
 (define (move-ate b q)
   (cond
     [(fora b) empty]
+    ;; se bateu == true, devolve Cena com Bolha com parametros ix e iy invertidos
     [(bateu b q) (cons (desenha-bolha (make-bolha (quadrado-x q)
                                              (quadrado-y q)
                                              (- (bolha-ix b))
