@@ -1,6 +1,21 @@
 (require 2htdp/image)
 (require 2htdp/universe)
 
+;; ---------------------------------------------------------------------------------------------------
+;;                                universidade federal do rio grande do sul
+;;                                         instituto de informática
+;;                                   departamento de informática teórica
+;;                                   inf05008 - fundamentos de algoritmos
+;;                                       prof. dr. lucio mauro duarte
+;;                                        exercício extraclasse 4
+;;                                     tiago dias ferreira - 00161746
+;;                                pedro fronchetti costa da silva - 00313878
+;; ---------------------------------------------------------------------------------------------------
+
+;; ---------------------------------------------------------------------------------------------------
+;;                                         definicoes de dados
+;; ---------------------------------------------------------------------------------------------------
+
 ;; altura da tela
 (define ALTURA 400)
 ;; largura da tela
@@ -417,3 +432,33 @@
 (check-expect (roda-filme LB1 LQ1 C1) (run-movie 0.001 (produz-filme (inicia-bolhas LB1 C1) LQ1 C1)))
 
 (roda-filme LB1 LQ1 C1)
+
+;; ---------------------------------------------------------------------------------------------------
+;;                                            relatório
+;; ---------------------------------------------------------------------------------------------------
+;;     O problema apresentado em aula se demonstrou demasiado complexo para ser resolvido com apenas
+;; uma função, portanto, tivemos que decidir qual abordagem escolher para resolvê-lo.
+;;     Previamente, se fez necessário, definirmos a forma com a qual representariamos os componentes
+;; que fazem parte da animação: a representação da bolha é apenas um círculo, os obstáculos são
+;; quadrados, assim como nosso canhão, que permanece em um canto da tela, de onde as bolhas partem.
+;;     Partindo dos elementos mínimos que compunham a nossa cena, a abordagem escolhida para resolver
+;; o problema foi ir do problema geral, em direção às partes mais específicas e funções auxiliares
+;; mais simples que precisaríamos desenvolver. O programa para apenas quando todas as bolhas são
+;; destruídas, ou seja, quando todas encostaram em um obstáculo mais ou igualmente rígido, ou quando
+;; as bolhas chegaram na borda da área delimitada para a animação.
+;;     Para desenvolver o programa, a implementação das funções foi dividida entre os integrantes da
+;; dupla, de modo que Tiago ficou encarregado das estruturas necessárias, dos tipos mistos, da
+;; representação dos objetos, da implementação do movimento e colisão; enquanto a Pedro coube a
+;; adaptação das funções para listas de bolhas e obstáculos, implementação do canhão, inicialização
+;; das bolhas e a verificação de estouro das bolhas para a condição de parada.
+;;     O programa sempre termina pois como todas as bolas se movem, significa que eventualmente
+;; colidirão com um obstáculo capaz de estourá-la: seja quando podem voltar em direção à borda de onde
+;; vieram, ou colidindo num obstáculo igualmente ou mais rígido. Tendo em vista estas condições para o
+;; estouro das bolhas, no momento em que todas bolhas estourarem, ocorre a parada do programa, sendo
+;; este o argumento de terminação do programa.
+;;     As funções individualmente mais custosas apresentam apenas custo O(N), sendo elas as funções:
+;; bolhas-estouradas, colidindo, quem-colide, atualiza-bolhas, gera-quadrados, gera-cena,
+;; bolhas-estouradas?, inicia-bolhas e produz-filme. O custo delas é O(N) pois cada uma realiza
+;; recursão sobre apenas uma lista ou, no caso de recursão estruturada, chama a própria função apenas
+;; uma vez por execução dela mesma.
+;; ---------------------------------------------------------------------------------------------------
